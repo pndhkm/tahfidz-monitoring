@@ -9,16 +9,22 @@
 		@csrf
 
 		<div class="form-group">
-			<label>Nama Siswa</label>
+			<label>Nama Santri</label>
 			<input type="text" class="form-control" value="" name="siswa_name">
 			@if ($errors->has('siswa_name'))
 			    <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('siswa_name') }}</p></div>
 			@endif
 		</div>
 		<div class="form-group">
+			<label>NiS (Nomor Induk Santri)</label>
+			<input type="text" class="form-control" value="" name="nis">
+			@if ($errors->has('nis'))
+			    <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('nis') }}</p></div>
+			@endif
+		</div>
+		<div class="form-group">
 			<label>Jenis Hafalan</label>
 			<select class="form-control" name="memorization_type">
-				<option value="{{ Siswa::TYPE_IQRO }}" >Iqro</option>
 				<option value="{{ Siswa::TYPE_QURAN }}" >Alquran</option>
 			</select>
 			@if ($errors->has('memorization_type'))
@@ -26,7 +32,7 @@
 			@endif
 		</div>
 		<div class="form-group">
-			<label>Kelas </label>
+			<label>Halaqah </label>
 			<select class="js-example-basic-single form-control" name="class_id" id="class_id" style="width: 100%">
 	          <option></option>
 	        </select>

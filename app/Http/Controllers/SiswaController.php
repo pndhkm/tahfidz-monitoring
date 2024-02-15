@@ -101,26 +101,27 @@ class SiswaController extends Controller
         $siswa = Siswa::findOrFail($request->get('idsiswa'));
 
         $siswa->siswa_name = $request->get('siswa_name');
+        $siswa->nis = $request->get('nis');
         $siswa->memorization_type = $request->get('memorization_type');
         $siswa->class_id = $request->get('class_id');
     
         // Validasi jika siswa ini belum pernah diinput sebelumnya
-        if(Siswa::validateSiswa($request->get('class_id'),$request->get('siswa_name'),$request->get('idsiswa')))
+        if(Siswa::validateSiswa($request->get('class_id'),$request->get('nis'),$request->get('idsiswa')))
         {
             DB::rollBack();
-            return $this->getResponse(false,400,'','Data siswa ini sudah terinput sebelumnya');
+            return $this->getResponse(false,400,'','NIS santri sudah terdaftar');
         }
 
         if(!$siswa->save())
         {
             DB::rollBack();
-            return $this->getResponse(false,400,'','Siswa gagal diupdate');
+            return $this->getResponse(false,400,'','Santri gagal diupdate');
         }
 
         if($this->getUserPermission('update siswa'))
         {
             DB::commit();
-            return $this->getResponse(true,200,'','Siswa berhasil diupdate');
+            return $this->getResponse(true,200,'','Santri berhasil diupdate');
         }
         else
         {
@@ -139,14 +140,15 @@ class SiswaController extends Controller
     	$siswa = new Siswa();
 
     	$siswa->siswa_name = $request->get('siswa_name');
+    	$siswa->nis = $request->get('nis');
     	$siswa->memorization_type = $request->get('memorization_type');
     	$siswa->class_id = $request->get('class_id');
     	
     	// Validasi jika siswa ini belum pernah diinput sebelumnya
-    	if(Siswa::validateSiswa($request->get('class_id'),$request->get('siswa_name')))
+    	if(Siswa::validateSiswa($request->get('class_id'),$request->get('nis')))
     	{
     		DB::rollBack();
-	    	return redirect('siswa')->with('alert_error', 'Data siswa telah dimasukkan sebelumnya');
+	    	return redirect('siswa')->with('alert_error', 'NIS santri sudah terdaftar');
     	}
 
     	if(!$siswa->save())
@@ -224,11 +226,11 @@ class SiswaController extends Controller
             if(!$siswaModel->delete())
             {
                 DB::rollBack();
-                return $this->getResponse(false,400,'','Siswa gagal dihapus');
+                return $this->getResponse(false,400,'','Santri gagal dihapus');
             }
 
             DB::commit();
-            return $this->getResponse(true,200,'','Siswa berhasil dihapus');
+            return $this->getResponse(true,200,'','Santri berhasil dihapus');
     	}
     }
 }

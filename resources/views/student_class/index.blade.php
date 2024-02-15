@@ -10,7 +10,7 @@
             success
         @endslot
         @slot('title')
-            Terimakasih
+            
         @endslot
         @slot('message')
             {{ session('alert_success') }}
@@ -42,7 +42,7 @@
     <thead>
         <tr>
             <th>Angkatan</th>
-            <th>Kelas</th>
+            <th>Halaqah</th>
             <th>Guru</th>
             <th width="100px">Action</th>
         </tr>
@@ -60,7 +60,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <p class="modal-title">Detail Kelas</p>
+      <p class="modal-title">Detail Halaqah</p>
     </div>
     <div class="modal-body">
 
@@ -79,7 +79,7 @@
     </div>
     
     <div class="form-group">
-      <label>Kelas</label>
+      <label>Halaqah</label>
       <input type="text" class="form-control" value="" name="class_name" id="class_name">
     </div> 
 
@@ -216,7 +216,7 @@ function hapus(idclass)
 {
   swal({
       title: "Menghapus",
-      text: 'Dengan anda menghapus kelas, maka seluruh data nilai siswa dan data siswa dalam kelas ini akan ikut terhapus', 
+      text: 'Dengan anda menghapus Halaqah, maka seluruh data nilai santri dan data santri dalam halaqah ini akan ikut terhapus', 
       icon: "warning",
       buttons: true,
       dangerMode: true,

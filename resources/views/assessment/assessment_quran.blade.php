@@ -10,7 +10,7 @@
             success
         @endslot
         @slot('title')
-            Terimakasih
+            
         @endslot
         @slot('message')
             {{ session('alert_success') }}
@@ -35,7 +35,7 @@
     @csrf
 
     <div class="form-group">
-      <label>Nama Santri / Siswa</label>
+      <label>Nama Santri</label>
       <input type="text" class="form-control" value="{{ $data_siswa->siswa_name }}" disabled>
     </div>
 
@@ -65,8 +65,48 @@
         @endif
     </div>
 
+    <div class="form-group col-md-4" style="padding-left: 0px">
+      <label>Kelancaran</label>
+        <input type="number" class="form-control" id="kelancaran" name="kelancaran">
+        @if ($errors->has('kelancaran'))
+          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('kelancaran') }}</p></div>
+        @endif
+    </div>
+
+    <div class="form-group col-md-4" style="padding-left: 0px">
+      <label>Tajwid</label>
+        <input type="number" class="form-control" id="tajwid" name="tajwid">
+        @if ($errors->has('tajwid'))
+          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('tajwid') }}</p></div>
+        @endif
+    </div>
+
+    <div class="form-group col-md-4" style="padding-left: 0px">
+      <label>Makhraj</label>
+        <input type="number" class="form-control" id="makhraj" name="makhraj">
+        @if ($errors->has('makhraj'))
+          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('makhraj') }}</p></div>
+        @endif
+    </div>
+
+    <div class="form-group col-md-6" style="padding-left: 0px">
+      <label>Nilai</label>
+        <input type="number" class="form-control" id="nilai" name="nilai">
+        @if ($errors->has('nilai'))
+          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('nilai') }}</p></div>
+        @endif
+    </div>
+
+    <div class="form-group col-md-6" style="padding-left: 0px">
+      <label>Banyak Halaman</label>
+        <input class="form-control" id="banyak_halaman" name="banyak_halaman">
+        @if ($errors->has('banyak_halaman'))
+          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('banyak_halaman') }}</p></div>
+        @endif
+    </div>
+
     <div class="form-group">
-      <label>Catatan </label>
+      <label>Keterangan </label>
       <input type="text" class="form-control" name="note">
       @if ($errors->has('note'))
           <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('note') }}</p></div>
@@ -74,7 +114,7 @@
     </div>
       
     <div class="form-group" id="submit_yes" style="padding-top: 20px; padding-bottom: 20px">
-      <button type="submit" class="btn btn-info" value="text 1"> VALIDASI SELESAI </button>
+      <button type="submit" class="btn btn-info" value="text 1"> SUBMIT </button>
     </div>
 
     <div class="form-group">
@@ -91,7 +131,12 @@
       <tr>
           <th width="30%">Surat </th>
           <th width="20%">Ayat </th>
-          <th width="20%">Catatan / Nilai </th>
+          <th width="20%">Kelancaran</th>
+          <th width="20%">Tajwid</th>
+          <th width="20%">Makhraj</th>
+          <th width="20%">Nilai</th>
+          <th width="20%">Banyak Halaman</th>
+          <th width="20%">Keterangan</th>
           <th width="50%">Tanggal </th>
       </tr>
   </thead>
@@ -130,6 +175,11 @@
         columns: [
             {data: 'assessment', name: 'assessment'},
             {data: 'range', name: 'range'},
+            {data: 'kelancaran', name: 'kelancaran'},
+            {data: 'tajwid', name: 'tajwid'},
+            {data: 'makhraj', name: 'makhraj'},
+            {data: 'nilai', name: 'nilai'},
+            {data: 'banyak_halaman', name: 'banyak_halaman'},
             {data: 'note', name: 'note'},
             {data: 'date', name: 'date'},
         ]

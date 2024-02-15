@@ -7,16 +7,13 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
 use App\Model\User\User;
+use App\Model\Parentmodel;
 
 use App\Model\SiswaHasParent\SiswaHasParent;
 
 
 use App\Model\Siswa\Siswa;
 
-use App\Http\Resources\User\UserResource;
-use App\Http\Resources\User\UserCollection;
-
-use App\Http\Requests\User\PasswordRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\StoreUserRequest;
 
@@ -51,9 +48,9 @@ class ParentController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){  
                         $btn = '<button onclick="btnUbah('.$row->id.')" name="btnUbah" type="button" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></button>';
-                        // $pass = '<button onclick="btnPass('.$row->id.')" name="btnPass" type="button" class="btn btn-info"><span class="glyphicon glyphicon-cog"></span></button>';
+                        $pass = '<button onclick="btnPass('.$row->id.')" name="btnPass" type="button" class="btn btn-info"><span class="glyphicon glyphicon-cog"></span></button>';
                         $delete = '<button onclick="btnDel('.$row->id.')" name="btnDel" type="button" class="btn btn-info"><span class="glyphicon glyphicon-trash"></span></button>';
-                        return $btn .'&nbsp' .'&nbsp'. $delete; 
+                        return $btn .'&nbsp'. $pass .'&nbsp'. $delete; 
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -107,7 +104,7 @@ class ParentController extends Controller
             $user = User::findOrFail($request->iduser);
 
             $user->username = $request->get('username');
-            // $user->email = $request->get('email');
+            $user->email = $request->get('email');
             $user->address = $request->get('address');
             $user->full_name = $request->get('full_name');
             $user->account_type = User::ACCOUNT_TYPE_PARENT;
@@ -176,10 +173,10 @@ class ParentController extends Controller
         $user = new User();
 
         $user->username = $request->get('username');
-        // $user->email = $request->get('email');
+        $user->email = $request->get('email');
         $user->address = $request->get('address');
         $user->full_name = $request->get('full_name');
-        // $user->password = Hash::make($request->get('password'));
+        $user->password = Hash::make($request->get('password'));
         $user->status = $request->get('status');
         $user->account_type = User::ACCOUNT_TYPE_PARENT;
         $user->status = User::USER_STATUS_ACTIVE;

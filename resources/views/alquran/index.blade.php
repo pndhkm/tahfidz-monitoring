@@ -10,7 +10,7 @@
             success
         @endslot
         @slot('title')
-            Terimakasih
+            
         @endslot
         @slot('message')
             {{ session('alert_success') }}

@@ -18,11 +18,11 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-left"></ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <!-- <li>
                    <a href="<?= URL::to('/profile'); ?>">
                       <span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp Profile
                     </a>
-                </li>
+                </li> -->
                 @if($user->account_type == User::ACCOUNT_TYPE_CREATOR || $user->account_type == User::ACCOUNT_TYPE_ADMIN)
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -39,22 +39,21 @@
 
                         @endif
 
-                        <li><a href="<?= URL::to('/alquran'); ?>"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp Qur'an </a></li> 
-                        <li><a href="<?= URL::to('/iqro'); ?>"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp Iqro </a></li>
+                        <!-- <li><a href="<?= URL::to('/alquran'); ?>"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp Qur'an </a></li>  -->
                          <li><a href="<?= URL::to('/action-log'); ?>"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp Log Sistem </a></li> 
                       </ul>
                 </li>
                 @endif
 
-                @if($user->account_type == User::ACCOUNT_TYPE_CREATOR || $user->account_type == User::ACCOUNT_TYPE_ADMIN || $user->account_type == User::ACCOUNT_TYPE_TEACHER)
+                @if($user->account_type == User::ACCOUNT_TYPE_CREATOR || $user->account_type == User::ACCOUNT_TYPE_ADMIN || $user->account_type == User::ACCOUNT_TYPE_TEACHER || $user->account_type == User::ACCOUNT_TYPE_PARENT)
 
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <span class="glyphicon glyphicon-book" aria-hidden="true"></span> &nbsp Laporan 
                       </a>
                       <ul class="dropdown-menu">
-                        <li><a href="{{route('daily-report')}}"> Laporan Harian </a></li> 
-                        <li><a href="{{route('student-report')}}"> Laporan Persiswa </a></li>
+                        <li><a href="{{route('daily-report')}}"> Laporan </a></li> 
+                        <li><a href="{{route('student-report')}}"> Laporan Persantri </a></li>
                       </ul>
                 </li>
 
@@ -62,25 +61,25 @@
 
                 @if($user->account_type == User::ACCOUNT_TYPE_CREATOR || $user->account_type == User::ACCOUNT_TYPE_ADMIN)
 
-                <li>
+                <!-- <li>
                    <a href="<?= URL::to('/notification'); ?>">
                       <p>Buat Notifikasi</p>
                     </a>
-                </li>
+                </li> -->
                 
                 @endif
 
-                @if($user->account_type != User::ACCOUNT_TYPE_CREATOR)
+                @if($user->account_type != User::ACCOUNT_TYPE_CREATOR || $user->account_type == User::ACCOUNT_TYPE_ADMIN)
 
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             
                             <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> &nbsp Notifikasi
                             
-                            <!-- Hitung pesan notifikasi belum terbaca -->
+                            Hitung pesan notifikasi belum terbaca
                             <?php 
-                              $data_notif   = UserNotification::where('user_id', $user->id)->orderBy('created_at','DESC')->limit(5)->get();
-                              $count_notif  = UserNotification::where('user_id', $user->id)->where('status',UserNotification::STATUS_UNREAD)->get()->count(); 
+                              $data_notif = UserNotification::where('user_id', $user->id)->orderBy('created_at','DESC')->limit(5)->get();
+                              $count_notif = UserNotification::where('user_id', $user->id)->where('status',UserNotification::STATUS_UNREAD)->get()->count(); 
                             ?>
 
                             @if($count_notif >= 1)
@@ -99,7 +98,7 @@
                       </ul>
                       @endif
                       
-                </li>
+                </li> -->
 
                 @endif
 

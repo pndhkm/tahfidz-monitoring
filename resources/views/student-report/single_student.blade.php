@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Laporan Harian</title>
+	<title>Laporan</title>
 </head>
 <style>
 
@@ -34,8 +34,7 @@
 
 <div style="text-align: center; line-height: 1.5;">
 	<p> 
-		<h4> Laporan Rekap Ananda {{ $siswa_id }} <br>
-		Periode {{ date('d M Y', strtotime($start_date)) }} Sampai dengan {{ date('d M Y', strtotime($end_date)) }} <h4> 
+		<h4> Laporan Rekap Ananda {{ $siswa_id }}<h4> 
 	<p>
 </div>
 
@@ -44,9 +43,13 @@
 <table id="table_style">
 <thead>
 	<tr>
-	<th> Surat / Jilid </th>
-	<th> Ayat / Halaman </th>
-	<th> Note </th>
+	<th> Surat </th>
+	<th> Kelancaran</th>
+	<th> Tajwid </th>
+	<th> Makhraj </th>
+	<th> Nilai </th>
+	<th> Banyak Halaman </th>
+	<th> Keterangan </th>
 	<th> Tanggal </th>
 	</tr>
 </thead>
@@ -58,8 +61,12 @@
 
     <tr>
     
-    <td>{{ $assessment->assessment }}</td>
-    <td>{{ $assessment->range }}</td>
+  <td>{{ $assessment->assessment }}</td>
+  	<td>{{ $assessment->kelancaran }}</td>
+    <td>{{ $assessment->tajwid }}</td>
+    <td>{{ $assessment->makhraj }}</td>
+    <td>{{ $assessment->nilai }}</td>
+    <td>{{ $assessment->banyak_halaman }}</td>
     <td>{{ $assessment->note }}</td>
     <td>{{ date('d M Y', strtotime($assessment->date)) }}</td>
     

@@ -18,42 +18,36 @@ class Siswa extends Model
     const TYPE_IQRO = 10;
     const TYPE_QURAN = 20;
        
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    
     protected $fillable = [
         'siswa_name', 
+        'nis',
         'class_id', 
         'memorization_type'
     ];
 
     public static $rules = [
         'siswa_name' => 'required',
+        'nis' => 'required',
         'class_id' => 'required | integer',
         'memorization_type' => 'required | integer'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
+    
     protected $hidden = [];
 
     /**
      * 
      */
-    public static function validateSiswa($class_id,$siswa_name,$siswa_id=null)
+    public static function validateSiswa($class_id,$nis,$siswa_id=null)
     {
         if($siswa_id != null)
         {
-            $data = self::where('class_id',$class_id)->where('siswa_name',$siswa_name)->whereNotIn('id',[$siswa_id])->first(); 
+            $data = self::where('class_id',$class_id)->where('nis',$nis)->whereNotIn('id',[$siswa_id])->first(); 
         }
         else
         {
-            $data = self::where('class_id',$class_id)->where('siswa_name',$siswa_name)->first(); 
+            $data = self::where('class_id',$class_id)->where('nis',$nis)->first(); 
         }
         
         if($data != null)

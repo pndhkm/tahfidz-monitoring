@@ -43,7 +43,7 @@
     <thead>
         <tr>
             <th>Nama</th>
-            <th>Kontak</th>
+            <th>Email</th>
             <th>Alamat</th>
             <th width="100px">Action</th>
         </tr>
@@ -67,14 +67,14 @@
       <div class="modal-body">
 
   	<div class="form-group">
-  		<label>Kontak</label>
-  		<input type="tel" class="form-control" value="" id="username">
+  		<label>Username</label>
+  		<input type="text" class="form-control" value="" id="username">
   	</div>
 
-  	<!-- <div class="form-group">
+  	<div class="form-group">
   		<label>Email</label>
   		<input type="text" class="form-control" value="" id="email">
-  	</div> -->
+  	</div>
 
   	<div class="form-group">
   		<label>Nama</label>
@@ -91,13 +91,14 @@
 
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-danger pull-right" id="non_aktif_button">Non Aktifkan</button>
         <button type="button" id="update_data" class="btn btn-default pull-left">Update</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- <div class="modal fade" id="updatePassword" role="dialog">
+<div class="modal fade" id="updatePassword" role="dialog">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -125,7 +126,7 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 @endsection
 
@@ -154,7 +155,6 @@ $(function () {
       columns: [
           {data: 'full_name', name: 'full_name'},
           // {data: 'email', name: 'email'},
-          {data: 'username', name: 'username'},
           {data: 'address', name: 'address'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
       ]
@@ -166,8 +166,8 @@ function btnDel(id)
   iduser = id;
   
   swal({
-      title: "Hapus Data",
-      text: 'Apakah anda yakin untuk menghapus data ini!', 
+      title: "Menon Aktifkan User",
+      text: 'User yang telah dinon aktifkan tidak dapat diaktifkan kembali', 
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -297,7 +297,7 @@ function btnUbah(id){
   $('#update_data').click(function() { 
 
       var username = $('#username').val();
-      // var email = $('#email').val();
+      var email = 'a@a';
       var full_name = $('#nama_lengkap').val();
       var address = $('#alamat').val();
       var siswa_data = $('#siswa_data').val();
@@ -309,8 +309,8 @@ function btnUbah(id){
           iduser:iduser, 
           "_token": "{{ csrf_token() }}",
           username : username,
-          // email : email,
           full_name : full_name,
+          email : email,
           address : address,
           siswa_data : siswa_data
         },

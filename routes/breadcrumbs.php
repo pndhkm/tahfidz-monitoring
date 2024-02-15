@@ -20,6 +20,17 @@ Breadcrumbs::for('create-user', function ($trail) {
 });
 
 // Orangtua
+Breadcrumbs::for('index-parentmodel', function ($trail) {
+    $trail->push('Orangtua', route('index-parentmodel'));
+});
+
+Breadcrumbs::for('create-parentmodel', function ($trail) {
+    $trail->parent('index-parentmodel');
+    $trail->push('Tambah Orangtua', route('index-parentmodel'));
+});
+
+
+// Orangtua
 Breadcrumbs::for('index-parent', function ($trail) {
     $trail->push('Orangtua', route('index-parent'));
 });
@@ -32,23 +43,23 @@ Breadcrumbs::for('create-parent', function ($trail) {
 
 // Kelas
 Breadcrumbs::for('student-class', function ($trail) {
-    $trail->push('Kelas', route('student-class'));
+    $trail->push('Halaqah', route('student-class'));
 });
 
 Breadcrumbs::for('create-student-class', function ($trail) {
     $trail->parent('student-class');
-    $trail->push('Tambah Kelas', route('student-class'));
+    $trail->push('Tambah Halaqah', route('student-class'));
 });
 
 // Siswa
 
 Breadcrumbs::for('siswa', function ($trail) {
-    $trail->push('Siswa', route('siswa'));
+    $trail->push('Santri', route('siswa'));
 });
 
 Breadcrumbs::for('create-siswa', function ($trail) {
     $trail->parent('siswa');
-    $trail->push('Tambah Siswa', route('siswa'));
+    $trail->push('Tambah Santri', route('siswa'));
 });
 
 // Role dan Permission
@@ -103,17 +114,17 @@ Breadcrumbs::for('create-assessment', function ($trail) {
 
 // Daily Report
 Breadcrumbs::for('daily-report', function ($trail) {
-    $trail->push('Laporan harian', route('daily-report'));
+    $trail->push('Laporan', route('daily-report'));
 });
 
 // Student Report
 Breadcrumbs::for('student-report', function ($trail) {
-    $trail->push('Laporan Per Siswa / Siswi', route('student-report'));
+    $trail->push('Laporan Per Santri', route('student-report'));
 });
 
 // Student Lack Report
 Breadcrumbs::for('student-lack-report', function ($trail) {
-    $trail->push('Laporan Tanggungan Siswa / Siswi', route('student-lack-report'));
+    $trail->push('Laporan Tanggungan Santri', route('student-lack-report'));
 });
 
 // Action Log

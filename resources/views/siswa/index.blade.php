@@ -10,7 +10,7 @@
             success
         @endslot
         @slot('title')
-            Terimakasih
+            
         @endslot
         @slot('message')
             {{ session('alert_success') }}
@@ -42,9 +42,10 @@
 <table class="table table-bordered data-table display nowrap" style="width:100%">
     <thead>
         <tr>
-            <th>Nama Siswa</th>
+            <th>Nama Santri</th>
+            <th>NIS</th>
             <th>Jenis Hafalan</th>
-            <th>Kelas</th>
+            <th>Halaqah</th>
             <th width="100px">Action</th>
         </tr>
     </thead>
@@ -62,19 +63,23 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <p class="modal-title">Detail Siswa</p>
+      <p class="modal-title">Detail Santri</p>
     </div>
     <div class="modal-body">
 
     <div class="form-group">
-      <label>Nama Siswa</label>
+      <label>Nama Santri</label>
       <input type="text" class="form-control" value="" name="siswa_name" id="siswa_name">
+    </div> 
+
+    <div class="form-group">
+      <label>NIS (nomor induk santri)</label>
+      <input type="text" class="form-control" value="" name="nis" id="nis">
     </div> 
 
     <div class="form-group">
       <label>Jenis Hafalan</label>
       <select class="form-control" name="memorization_type" id="memorization_type">
-        <option value="{{ Siswa::TYPE_IQRO }}" >Iqro</option>
         <option value="{{ Siswa::TYPE_QURAN }}" >Alquran</option>
       </select>
     </div>
@@ -113,6 +118,7 @@ $(function () {
       ajax: "{{ route('siswa') }}",
       columns: [
           {data: 'siswa_name', name: 'siswa_name'},
+          {data: 'nis', name: 'nis'},
           {data: 'memorization_type', name: 'memorization_type'},
           {data: 'class_id', name: 'class_id'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -124,7 +130,7 @@ function hapus(idsiswa)
 {
   swal({
       title: "Menghapus",
-      text: 'Siswa yang dihapus, akan menghilangkan data siswa yang bersangkutan secara keseluruhan', 
+      text: 'Santri yang dihapus, akan menghilangkan data santri yang bersangkutan secara keseluruhan', 
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -195,6 +201,7 @@ function callSelect2()
 function clearAll()
 {
   $('#siswa_name').val('');
+  $('#nis').val('');
   $("#class_id").val([]).trigger("change");
   $('#memorization_type').val('');
   $('#note').val('');
@@ -213,6 +220,7 @@ function btnUbah(id){
      success:function(data) {
         $('#detailModal').modal('toggle');
         $('#siswa_name').val(data.data.siswa_name);
+        $('#nis').val(data.data.nis);
         $('#class_id').val(data.data.class.id).trigger('change');
         $('#memorization_type').val(data.data.memorization_type);
      }
@@ -221,6 +229,7 @@ function btnUbah(id){
   $('#update_data').click(function() {
 
     var siswa_name = $('#siswa_name').val();
+    var nis = $('#nis').val();
     var memorization_type = $('#memorization_type').val();
     var class_id = $('#class_id').val();
 
@@ -231,6 +240,7 @@ function btnUbah(id){
             idsiswa:idsiswa, 
             "_token": "{{ csrf_token() }}",
             siswa_name : siswa_name,
+            nis : nis,
             memorization_type : memorization_type,
             class_id : class_id
       },

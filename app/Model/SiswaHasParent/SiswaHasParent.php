@@ -19,12 +19,26 @@ class SiswaHasParent extends Model
      */
     protected $fillable = [
         'parent_id', 
-        'siswa_id', 
+        'siswa_id',
+        'siswa_name', 
+        'class_id',
+        'class_name',
+        'angkatan',
+        'note',
+        'teacher_id',
+        'teacher_name' 
     ];
 
     public static $rules = [
         'parent_id' => 'required | integer',
         'siswa_id' => 'required | integer',
+        'siswa_name' => 'string',
+        'class_id' => 'required | integer',
+        'class_name' => 'string',
+        'angkatan' => 'string',
+        'note' => 'string',
+        'teacher_id' => 'required | integer',
+        'teacher_name' => 'string',
     ];
 
     /**

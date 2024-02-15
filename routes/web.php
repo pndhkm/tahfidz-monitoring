@@ -51,6 +51,16 @@ $router->group(['prefix' => 'parent'], function () use ($router) {
 	$router->get('/get-siswa',  ['as'=>'get-siswa','uses' => 'ParentController@getSiswa']);
 });
 
+// Untuk Parent
+// $router->group(['prefix' => 'parentmodel'], function () use ($router) {
+// 	$router->get('/',  ['as'=>'index-parentmodel','uses' => 'ParentmodelController@index']);
+// 	$router->get('/create',  ['as'=>'create-parent','uses' => 'ParentmodelController@create']);
+// 	$router->post('/store',  ['as'=>'store-parent','uses' => 'ParentmodelController@store']);
+// 	$router->post('/update',  ['as'=>'update-parent','uses' => 'ParentmodelController@update']);
+// 	$router->get('/get-siswa',  ['as'=>'get-siswa','uses' => 'ParentmodelController@getSiswa']);
+// });
+
+
 // Untuk Class
 $router->group(['prefix' => 'student-class'], function () use ($router) {
 	$router->get('/',  ['as'=>'student-class','uses' => 'StudentClassController@index']);

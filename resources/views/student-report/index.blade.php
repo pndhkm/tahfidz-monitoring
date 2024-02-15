@@ -5,18 +5,8 @@
 @section('content')
 
 <div class="form-group">
-	<label>Siswa</label>
+	<label>Santri</label>
     <select class="js-example-basic-single form-control" id="siswa_data" name="siswa_data" style="width: 100%"></select>
-</div>
-
-<div class="form-group col-md-6" style="padding-left: 0px">
-	<label><strong>Tanggal Mulai</strong></label>
-	<input autocomplete="off" type="text" name="startDate" class="form-control"/>
-</div>
-
-<div class="form-group col-md-6" style="padding-left: 0px">
-	<label><strong>Tanggal Selesai</strong></label>
-	<input autocomplete="off" type="text" name="endDate" class="form-control"/>
 </div>
 
 <div class="form-group" style="padding-top: 20px">

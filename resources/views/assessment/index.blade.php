@@ -10,7 +10,7 @@
             success
         @endslot
         @slot('title')
-            Terimakasih
+            
         @endslot
         @slot('message')
             {{ session('alert_success') }}
@@ -38,9 +38,9 @@
 <table class="table table-bordered data-table display nowrap" style="width:100%">
     <thead>
         <tr>
-            <th>Nama Siswa</th>
+            <th>Nama Santri</th>
             <th>Jenis Hafalan</th>
-            <th>Kelas</th>
+            <th>Halaqah</th>
             <th width="100px">Action</th>
         </tr>
     </thead>

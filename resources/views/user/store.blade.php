@@ -37,6 +37,7 @@
 			<select class="form-control" name="account_type">
 				<option value="{{ User::ACCOUNT_TYPE_ADMIN }}" >Admin</option>
 				<option value="{{ User::ACCOUNT_TYPE_TEACHER }}" >Guru</option>
+				<!-- <option value="{{ User::ACCOUNT_TYPE_PARENT }}" >Orangtua</option> -->
 			</select>
 		</div>
 
@@ -58,7 +59,7 @@
 		</div>
 
 		<div class="form-group col-md-6" style="padding-left: 0px">
-			<label>Re Password</label>
+			<label>Confirm Password</label>
 			<input type="password" class="form-control" value="" name="password_confirmation">
 			@if ($errors->has('password'))
 			    <div class="password"><p style="color: red"><span>&#42;</span> {{ $errors->first('password') }}</p></div>

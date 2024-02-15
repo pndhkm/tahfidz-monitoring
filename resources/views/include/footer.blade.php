@@ -2,7 +2,7 @@
     <nav class="pull-left">
         
     </nav>
-    <p class="copyright pull-right">
+    <!-- <p class="copyright pull-right">
         &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.albarrmombaby.com">Al Barr</a>, Software House
-    </p>
+    </p> -->
 </div>

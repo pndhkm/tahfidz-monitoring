@@ -46,7 +46,8 @@ class HomeController extends Controller
                 $class = StudentClass::count();
             }           
 
-            $hafalan    = AssessmentLog::where('date',date("Y-m-d"))->count();
+            $hafalan    = AssessmentLog::count();
+            // $hafalan    = AssessmentLog::where('date',date("Y-m-d"))->count();
             $last_login = UserLoginHistory::findLastlogin();
 
             if($last_login != null)

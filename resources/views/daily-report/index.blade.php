@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="form-group">
-	<label><strong>Kelas</strong></label>
+	<label><strong>Halaqah</strong></label>
 	<select class="js-example-basic-single form-control" name="class_id" id="class_id" style="width: 100%">
       <option></option>
     </select>
@@ -15,19 +15,19 @@
 	<label><strong>Jenis Hafalan</strong></label>
 	<select class="form-control" name="memorization_type" id="memorization_type">
 		<option value="{{ Siswa::TYPE_QURAN }}" >Alquran</option>
-		<option value="{{ Siswa::TYPE_IQRO }}" >Iqro</option>
+		<!-- <option value="{{ Siswa::TYPE_IQRO }}" >Iqro</option> -->
 	</select>
 </div>
 
-<div class="form-group col-md-6" style="padding-left: 0px">
+<!-- <div class="form-group col-md-6" style="padding-left: 0px">
 	<label><strong>Tanggal Mulai</strong></label>
-	<input autocomplete="off" type="text" name="startDate" class="form-control"/>
-</div>
+	<input autocomplete="on" type="text" name="startDate" class="form-control"/>
+</div> -->
 
-<div class="form-group col-md-6" style="padding-left: 0px">
+<!-- <div class="form-group col-md-6" style="padding-left: 0px">
 	<label><strong>Tanggal Selesai</strong></label>
-	<input autocomplete="off" type="text" name="endDate" class="form-control"/>
-</div>
+	<input autocomplete="on" type="text" name="endDate" class="form-control"/>
+</div> -->
 
 <div class="form-group" style="padding-top: 20px">
 	<button type="submit" class="btn btn-info" id="tampil"> TAMPIL </button>

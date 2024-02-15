@@ -29,7 +29,7 @@
         </div>
 
 		<div class="form-group">
-			<label>Kelas</label>
+			<label>Halaqah</label>
 			<input type="text" class="form-control" value="" name="class_name">
 			@if ($errors->has('class_name'))
 			    <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('class_name') }}</p></div>

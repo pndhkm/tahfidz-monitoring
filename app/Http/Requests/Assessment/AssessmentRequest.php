@@ -8,21 +8,11 @@ use App\Model\Siswa\Siswa;
 
 class AssessmentRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         // Tentukan siswa dalam mode hafalan apa, untuk pemilihan rule yang sesuai
@@ -31,12 +21,17 @@ class AssessmentRequest extends FormRequest
         if($memorization_type != Siswa::TYPE_IQRO)
         {
             return [
-                'id_siswa'      => 'integer',
-                'surah_id'      => 'integer',
-                'ayat'          => 'integer',
-                'note'          => 'string | nullable',
-                'begin'         => 'integer',
-                'end'           => 'integer',
+                'id_siswa'          => 'integer',
+                'surah_id'          => 'integer',
+                'ayat'              => 'integer',
+                'kelancaran'        => 'string | nullable',
+                'tajwid'            => 'string | nullable',
+                'makhraj'           => 'string | nullable',
+                'nilai'             => 'string | nullable',
+                'banyak_halaman'    => 'string | nullable',
+                'note'              => 'string | nullable',
+                'begin'             => 'integer',
+                'end'               => 'integer',
             ];
         }
         else

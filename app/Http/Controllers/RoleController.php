@@ -37,7 +37,7 @@ class RoleController extends Controller
     {
         if ($request->ajax()) {
 
-            $data = Role::whereNotIn('name', ['Creator'])->get();
+            $data = Role::whereNotIn('name', ['Creator', 'Orangtua'])->get();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){  

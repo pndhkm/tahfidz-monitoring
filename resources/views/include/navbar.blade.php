@@ -6,13 +6,24 @@
     $user = Auth::user();
 ?>
 
-<div class="sidebar-wrapper">
-<div class="logo">
-    <!-- <a href="<?= URL::to('/'); ?>" class="simple-text">
-        TAHFIDZ APP
-    </a> -->
-    <img src="<?= URL::to('/layout/assets/img/logo.png'); ?>" style="width:110px;height:40px;" class="center">
+<div class="sidebar-wrapper" style="background: #1e1b4b;">
+    <div class="logo">
+        <!-- <a href="<?= URL::to('/'); ?>" class="simple-text" style="color: #22c55e; font-size: 16px;">
+            RAHMATAN LIL'ALAMIN
+        </a> -->
+        <img src="<?= URL::to('/layout/assets/img/logo.png'); ?>" style="width:200px;height:50px;" class="center">
+    </div>
+
+<br>
+<div class="text-center m-auto user-login">
+    <i style="font-size: 100px;" class="pe-7s-user pe-lg pe-va"></i>
+    <p>{{ $user->full_name }}</p>
+     <a href="<?= URL::to('/profile'); ?>">
+         <!-- <span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp Profile -->
+         Edit
+     </a>
 </div>
+
 
 <ul class="nav">
     <li class="<?= $active == 'home' ? 'active' : '' ?>">
@@ -45,13 +56,21 @@
     <li class="<?= $active == 'student_class' ? 'active' : '' ?>">
         <a href="<?= URL::to('/student-class'); ?>">
             <i class="pe-7s-note2"></i>
-            <p>Kelas</p>
+            <p>Halaqah</p>
         </a>
     </li>
+
     <li class="<?= $active == 'siswa' ? 'active' : '' ?>">
         <a href="<?= URL::to('/siswa'); ?>">
             <i class="pe-7s-smile"></i>
-            <p>Manajemen Siswa</p>
+            <p>Santri</p>
+        </a>
+    </li>
+
+    <li class="<?= $active == 'alquran' ? 'active' : '' ?>">
+        <a href="<?= URL::to('/alquran'); ?>">
+            <i class="glyphicon glyphicon-book"></i>
+            <p>Qur'an</p>
         </a>
     </li>
 
@@ -62,7 +81,7 @@
     <li class="<?= $active == 'assessment' ? 'active' : '' ?>">
         <a href="<?= URL::to('/assessment'); ?>">
             <i class="pe-7s-note2"></i>
-            <p style="color: yellow">Penilaian Siswa</p>
+            <p style="color: yellow">Penilaian Santri</p>
         </a>
     </li>
 

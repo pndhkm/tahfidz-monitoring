@@ -74,12 +74,16 @@ class StudentReportController extends Controller
     {
         if ($request->ajax()) {
             
-            $date_from = Carbon::parse($request->get('start_date'))->startOfDay();
-            $date_to = Carbon::parse($request->input('end_date'))->endOfDay();
+            // $date_from = Carbon::parse($request->get('start_date'))->startOfDay();
+            // $date_to = Carbon::parse($request->input('end_date'))->endOfDay();
 
-            $data = AssessmentLog::whereDate('date', '>=', $date_from)
-            ->whereDate('date', '<=', $date_to)
-            ->leftJoin('tbl_siswa', 'tbl_siswa.id', '=', 'tbl_assessment_log.siswa_id')
+            // $data = AssessmentLog::whereDate('date', '>=', $date_from)
+            // ->whereDate('date', '<=', $date_to)
+            // ->leftJoin('tbl_siswa', 'tbl_siswa.id', '=', 'tbl_assessment_log.siswa_id')
+            // ->where('tbl_siswa.id',$request->get('siswa'))
+            // ->orderBy('tbl_assessment_log.created_at', 'asc')->get();
+
+            $data = AssessmentLog::leftJoin('tbl_siswa', 'tbl_siswa.id', '=', 'tbl_assessment_log.siswa_id')
             ->where('tbl_siswa.id',$request->get('siswa'))
             ->orderBy('tbl_assessment_log.created_at', 'asc')->get();
 
@@ -103,9 +107,14 @@ class StudentReportController extends Controller
             $table  = '<table class="table table-striped">';
             $table .= '<thead>';
             $table .= '<tr>';
-            $table .= '<th> Surat / Jilid </th>';
-            $table .= '<th> Ayat / Halaman </th>';
-            $table .= '<th> Note / Nilai </th>';
+            $table .= '<th> Surat </th>';
+            $table .= '<th> Kelancaran </th>';
+            // $table .= '<th> Ayat / Halaman </th>';
+            $table .= '<th> Tajwid </th>';
+            $table .= '<th> Makhraj </th>';
+            $table .= '<th> Nilai </th>';
+            $table .= '<th> Banyak Halaman </th>';
+            $table .= '<th> Keterangan</th>';
             $table .= '<th> Tanggal </th>';
             $table .= '</tr>';
             $table .= '</thead>';
@@ -117,7 +126,12 @@ class StudentReportController extends Controller
             {
                 $table .= '<tr>';               
                 $table .= '<td>'.$assessment->assessment.'</td>';
-                $table .= '<td>'.$assessment->range.'</td>';
+                // $table .= '<td>'.$assessment->range.'</td>';
+                $table .= '<td>'.$assessment->kelancaran.'</td>';
+                $table .= '<td>'.$assessment->tajwid.'</td>';
+                $table .= '<td>'.$assessment->makhraj.'</td>';
+                $table .= '<td>'.$assessment->nilai.'</td>';
+                $table .= '<td>'.$assessment->banyak_halaman.'</td>';
                 $table .= '<td>'.$assessment->note.'</td>';
                 $table .= '<td>'. date('d M Y', strtotime($assessment->date)) .'</td>';
                 $table .= '</tr>';

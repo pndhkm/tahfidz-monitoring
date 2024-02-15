@@ -115,13 +115,13 @@ class StudentClassController extends Controller
             if(!$student_class->save())
             {
                 DB::rollBack();
-                return $this->getResponse(false,400,'','Kelas gagal diupdate');
+                return $this->getResponse(false,400,'','Halaqah gagal diupdate');
             }
 
             if($this->getUserPermission('update class'))
             {
                 DB::commit();
-                return $this->getResponse(true,200,'','Kelas berhasil diupdate');
+                return $this->getResponse(true,200,'','Halaqah berhasil diupdate');
             }
             else
             {
@@ -142,7 +142,7 @@ class StudentClassController extends Controller
 
         if(StudentClass::validateClass($request->get('angkatan'),$request->get('class_name'),$request->get('teacher_id')))
         {
-            return redirect('student-class')->with('alert_error', 'Kelas dengan tahun yang sama dan guru yang sama sudah dibuat sebelumnya');
+            return redirect('student-class')->with('alert_error', 'Halaqah dengan tahun yang sama dan guru yang sama sudah dibuat sebelumnya');
         }
         
         $student_class->angkatan = $request->get('angkatan');
@@ -224,11 +224,11 @@ class StudentClassController extends Controller
             if(!$classModel->delete())
             {
                 DB::rollBack();
-                return $this->getResponse(false,400,'','Kelas gagal dihapus');
+                return $this->getResponse(false,400,'','Halaqah gagal dihapus');
             }
 
             DB::commit();
-            return $this->getResponse(true,200,'','Kelas berhasil dihapus');
+            return $this->getResponse(true,200,'','Halaqah berhasil dihapus');
         }
     }
 

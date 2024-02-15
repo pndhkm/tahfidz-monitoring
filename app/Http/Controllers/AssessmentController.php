@@ -165,6 +165,11 @@ class AssessmentController extends Controller
             $assessment_log->range = $request->get('begin').'-'.$request->get('end');
             $assessment_log->date = Carbon::now();
             $assessment_log->assessment = 'Surat '.Surah::findOrFail($request->get('surah_id'))->surah_name;
+            $assessment_log->kelancaran = $request->get('kelancaran');
+            $assessment_log->tajwid = $request->get('tajwid');
+            $assessment_log->makhraj = $request->get('makhraj');
+            $assessment_log->nilai = $request->get('nilai');
+            $assessment_log->banyak_halaman = $request->get('banyak_halaman');
             $assessment_log->note = $request->get('note');
 
             if(!$assessment_log->save())
@@ -181,6 +186,11 @@ class AssessmentController extends Controller
                 $assessment->surah_id = $request->get('surah_id');
                 $assessment->ayat = $ayat;
                 $assessment->date = Carbon::now();
+                $assessment->kelancaran = $request->get('kelancaran');
+                $assessment->tajwid = $request->get('tajwid');
+                $assessment->makhraj = $request->get('makhraj');
+                $assessment->nilai = $request->get('nilai');
+                $assessment->banyak_halaman = $request->get('banyak_halaman');
                 $assessment->note = $request->get('note');
                 $assessment->group_ayat = $request->get('begin').'-'.$request->get('end');
 
@@ -190,6 +200,11 @@ class AssessmentController extends Controller
                 {
                     $assessment = $old_data;
                     $assessment->date = Carbon::now();
+                    $assessment->kelancaran = $request->get('kelancaran');
+                    $assessment->tajwid = $request->get('tajwid');
+                    $assessment->makhraj = $request->get('makhraj');
+                    $assessment->nilai = $request->get('nilai');
+                    $assessment->banyak_halaman = $request->get('banyak_halaman');
                     $assessment->note = $request->get('note');
                     $assessment->group_ayat = $request->get('begin').'-'.$request->get('end');
                     $status_assessment = 'RENEW';
@@ -335,6 +350,6 @@ class AssessmentController extends Controller
 
             $this->systemLog(false,'Menarik data Surah');
             return json_encode($arr_data);
-        }
+        }   
     }
 }

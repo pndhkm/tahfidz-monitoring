@@ -1,4 +1,5 @@
 .card{
+    display: flex;
     border-radius: $border-radius-base;
     box-shadow: 0 1px 2px rgba(0,0,0,.05),0 0 0 1px rgba(63,63,68,.1);
     background-color: #FFFFFF;
