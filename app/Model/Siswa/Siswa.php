@@ -21,14 +21,12 @@ class Siswa extends Model
     
     protected $fillable = [
         'siswa_name', 
-        'nis',
         'class_id', 
         'memorization_type'
     ];
 
     public static $rules = [
         'siswa_name' => 'required',
-        'nis' => 'required',
         'class_id' => 'required | integer',
         'memorization_type' => 'required | integer'
     ];
@@ -39,23 +37,17 @@ class Siswa extends Model
     /**
      * 
      */
-    public static function validateSiswa($class_id,$nis,$siswa_id=null)
+    public static function boot()
     {
-        if($siswa_id != null)
-        {
-            $data = self::where('class_id',$class_id)->where('nis',$nis)->whereNotIn('id',[$siswa_id])->first(); 
-        }
-        else
-        {
-            $data = self::where('class_id',$class_id)->where('nis',$nis)->first(); 
-        }
-        
-        if($data != null)
-        {
-            return true;
-        }
-
-        return false; 
+        parent::boot();
+    
+        static::creating(function ($siswa) {
+            $latestNis = static::max('nis'); 
+            $lastAuto = ($latestNis) ? intval(substr($latestNis, -3)) : 0; 
+            
+            $auto = $lastAuto + 1; 
+            $siswa->nis = date('Ymd') . str_pad($auto, 3, '0', STR_PAD_LEFT); 
+        });
     }
 
     /**
@@ -99,7 +91,7 @@ class Siswa extends Model
             case Siswa::TYPE_IQRO:
                 return 'Iqro';
             case Siswa::TYPE_QURAN:
-                return 'Alquran';
+                return 'Al Quran';
             default:
                 return '';
         }

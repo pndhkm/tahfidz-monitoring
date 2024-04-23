@@ -16,16 +16,9 @@
 			@endif
 		</div>
 		<div class="form-group">
-			<label>NiS (Nomor Induk Santri)</label>
-			<input type="text" class="form-control" value="" name="nis">
-			@if ($errors->has('nis'))
-			    <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('nis') }}</p></div>
-			@endif
-		</div>
-		<div class="form-group">
 			<label>Jenis Hafalan</label>
 			<select class="form-control" name="memorization_type">
-				<option value="{{ Siswa::TYPE_QURAN }}" >Alquran</option>
+				<option value="{{ Siswa::TYPE_QURAN }}" >Al Quran</option>
 			</select>
 			@if ($errors->has('memorization_type'))
 			    <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('memorization_type') }}</p></div>

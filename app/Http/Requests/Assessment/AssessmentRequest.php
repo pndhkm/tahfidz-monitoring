@@ -15,9 +15,9 @@ class AssessmentRequest extends FormRequest
 
     public function rules()
     {
-        // Tentukan siswa dalam mode hafalan apa, untuk pemilihan rule yang sesuai
+        
         $memorization_type = Siswa::findOrFail($this->request->get('id_siswa'))->memorization_type;
-
+    
         if($memorization_type != Siswa::TYPE_IQRO)
         {
             return [
@@ -32,6 +32,7 @@ class AssessmentRequest extends FormRequest
                 'note'              => 'string | nullable',
                 'begin'             => 'integer',
                 'end'               => 'integer',
+                'nis'               => 'string | nullable', 
             ];
         }
         else
@@ -43,10 +44,11 @@ class AssessmentRequest extends FormRequest
                 'note'          => 'string | nullable',
                 'begin'         => 'integer',
                 'end'           => 'integer',
+                'nis'           => 'string | nullable', 
             ];
         }
     }
-
+    
     /**
      * Get the validation messages that apply to the request.
      *

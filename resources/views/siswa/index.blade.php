@@ -73,14 +73,9 @@
     </div> 
 
     <div class="form-group">
-      <label>NIS (nomor induk santri)</label>
-      <input type="text" class="form-control" value="" name="nis" id="nis">
-    </div> 
-
-    <div class="form-group">
       <label>Jenis Hafalan</label>
       <select class="form-control" name="memorization_type" id="memorization_type">
-        <option value="{{ Siswa::TYPE_QURAN }}" >Alquran</option>
+        <option value="{{ Siswa::TYPE_QURAN }}" >Al Quran</option>
       </select>
     </div>
 

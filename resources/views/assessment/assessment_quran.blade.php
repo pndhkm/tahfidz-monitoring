@@ -66,36 +66,53 @@
     </div>
 
     <div class="form-group col-md-4" style="padding-left: 0px">
-      <label>Kelancaran</label>
-        <input type="number" class="form-control" id="kelancaran" name="kelancaran">
-        @if ($errors->has('kelancaran'))
-          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('kelancaran') }}</p></div>
-        @endif
+      <label for="kelancaran">Kelancaran</label>
+      <select class="form-control" id="kelancaran" name="kelancaran">
+        @for ($i = 1; $i <= 10; $i++)
+          <option value="{{ $i }}">{{ $i }}</option>
+        @endfor
+      </select>
+      @if ($errors->has('kelancaran'))
+        <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('kelancaran') }}</p></div>
+      @endif
     </div>
 
     <div class="form-group col-md-4" style="padding-left: 0px">
-      <label>Tajwid</label>
-        <input type="number" class="form-control" id="tajwid" name="tajwid">
-        @if ($errors->has('tajwid'))
-          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('tajwid') }}</p></div>
-        @endif
+      <label for="tajwid">Tajwid</label>
+      <select class="form-control" id="tajwid" name="tajwid">
+        @for ($i = 1; $i <= 10; $i++)
+          <option value="{{ $i }}">{{ $i }}</option>
+        @endfor
+      </select>
+      @if ($errors->has('tajwid'))
+        <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('tajwid') }}</p></div>
+      @endif
     </div>
 
     <div class="form-group col-md-4" style="padding-left: 0px">
-      <label>Makhraj</label>
-        <input type="number" class="form-control" id="makhraj" name="makhraj">
-        @if ($errors->has('makhraj'))
-          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('makhraj') }}</p></div>
-        @endif
+      <label for="makhraj">Makhraj</label>
+      <select class="form-control" id="makhraj" name="makhraj">
+        @for ($i = 1; $i <= 10; $i++)
+          <option value="{{ $i }}">{{ $i }}</option>
+        @endfor
+      </select>
+      @if ($errors->has('makhraj'))
+        <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('makhraj') }}</p></div>
+      @endif
     </div>
 
     <div class="form-group col-md-6" style="padding-left: 0px">
-      <label>Nilai</label>
-        <input type="number" class="form-control" id="nilai" name="nilai">
-        @if ($errors->has('nilai'))
-          <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('nilai') }}</p></div>
-        @endif
+      <label for="nilai">Nilai</label>
+      <select class="form-control" id="nilai" name="nilai">
+        @for ($i = 1; $i <= 10; $i++)
+          <option value="{{ $i }}">{{ $i }}</option>
+        @endfor
+      </select>
+      @if ($errors->has('nilai'))
+        <div class="error"><p style="color: red"><span>&#42;</span> {{ $errors->first('nilai') }}</p></div>
+      @endif
     </div>
+
 
     <div class="form-group col-md-6" style="padding-left: 0px">
       <label>Banyak Halaman</label>

@@ -105,13 +105,6 @@ class SiswaController extends Controller
         $siswa->memorization_type = $request->get('memorization_type');
         $siswa->class_id = $request->get('class_id');
     
-        // Validasi jika siswa ini belum pernah diinput sebelumnya
-        if(Siswa::validateSiswa($request->get('class_id'),$request->get('nis'),$request->get('idsiswa')))
-        {
-            DB::rollBack();
-            return $this->getResponse(false,400,'','NIS santri sudah terdaftar');
-        }
-
         if(!$siswa->save())
         {
             DB::rollBack();
@@ -143,14 +136,7 @@ class SiswaController extends Controller
     	$siswa->nis = $request->get('nis');
     	$siswa->memorization_type = $request->get('memorization_type');
     	$siswa->class_id = $request->get('class_id');
-    	
-    	// Validasi jika siswa ini belum pernah diinput sebelumnya
-    	if(Siswa::validateSiswa($request->get('class_id'),$request->get('nis')))
-    	{
-    		DB::rollBack();
-	    	return redirect('siswa')->with('alert_error', 'NIS santri sudah terdaftar');
-    	}
-
+        
     	if(!$siswa->save())
         {
             DB::rollBack();

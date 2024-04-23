@@ -38,6 +38,7 @@
 <table class="table table-bordered data-table display nowrap" style="width:100%">
     <thead>
         <tr>
+            <th>NIS</th>
             <th>Nama Santri</th>
             <th>Jenis Hafalan</th>
             <th>Halaqah</th>
@@ -71,6 +72,7 @@ $(function () {
       responsive: true,
       ajax: "{{ route('assessment') }}",
       columns: [
+          {data: 'nis', name: 'nis'},
           {data: 'siswa_name', name: 'siswa_name'},
           {data: 'memorization_type', name: 'memorization_type'},
           {data: 'class_id', name: 'class_id'},

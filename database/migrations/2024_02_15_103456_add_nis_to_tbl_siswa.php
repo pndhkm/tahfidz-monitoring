@@ -18,6 +18,7 @@ class AddNisToTblSiswa extends Migration
         });
     }
 
+    
     /**
      * Reverse the migrations.
      *

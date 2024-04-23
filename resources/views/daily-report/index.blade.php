@@ -14,7 +14,7 @@
 <div class="form-group">
 	<label><strong>Jenis Hafalan</strong></label>
 	<select class="form-control" name="memorization_type" id="memorization_type">
-		<option value="{{ Siswa::TYPE_QURAN }}" >Alquran</option>
+		<option value="{{ Siswa::TYPE_QURAN }}" >Al Quran</option>
 		<!-- <option value="{{ Siswa::TYPE_IQRO }}" >Iqro</option> -->
 	</select>
 </div>
