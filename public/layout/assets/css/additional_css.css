@@ -1,3 +1,26 @@
+.modal-backdrop {
+    z-index: -1 !important;
+    
+}    
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px; /* Adjusts for spacing */
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
 .form-gap {
     padding-top: 70px;
 }

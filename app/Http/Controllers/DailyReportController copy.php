@@ -112,7 +112,7 @@ class DailyReportController extends Controller
                 $empty_data = 
                 
                 '<div class="alert alert-danger" role="alert">
-                    <p> <strong> Maaf, Data yang anda cari tidak ditemukan pada tanggal tersebut </strong> </p>
+                    <p> <strong> Maaf, Data yang anda cari tidak ditemukan pada tanggal tersebut !! </strong> </p>
                 </div>';
 
                 return $this->getResponse(false,200,$empty_data,'Berhasil menarik data');
@@ -121,10 +121,16 @@ class DailyReportController extends Controller
             $table  = '<table class="table table-striped">';
             $table .= '<thead>';
             $table .= '<tr>';
-            $table .= '<th> ID </th>';
-            $table .= '<th> Hafalan </th>';
+            $table .= '<th> Santri </th>';
+            // $table .= '<th> Surat / Jilid </th>';
+            $table .= '<th> Kelancaran </th>';
+            // $table .= '<th> Ayat / Halaman </th>';
+            $table .= '<th> Tajwid </th>';
+            $table .= '<th> Makhraj </th>';
+            $table .= '<th> Nilai </th>';
+            $table .= '<th> Banyak Halaman </th>';
+            $table .= '<th> Keterangan</th>';
             $table .= '<th> Tanggal </th>';
-            $table .= '<th> Nilai</th>';
             $table .= '</tr>';
             $table .= '</thead>';
             $table .= '<tbody>';
@@ -137,8 +143,7 @@ class DailyReportController extends Controller
 
                 if($assessment->siswa_id != $old_assessment)
                 {
-                    $table .= '<td>'.$assessment->getSiswa->nis.'<br>';
-                    $table .= $assessment->getSiswa->siswa_name.'</td>';
+                    $table .= '<td>'.$assessment->getSiswa->siswa_name.'</td>';
                     $old_assessment = $assessment->siswa_id;
                 }
                 else
@@ -146,43 +151,15 @@ class DailyReportController extends Controller
                     $table .= '<td></td>';
                 }
                 
-                $table .= '<td>'.$assessment->assessment. ' ' .$assessment->range.'</td>';
+                // $table .= '<td>'.$assessment->assessment.'</td>';
+                // $table .= '<td>'.$assessment->range.'</td>';
+                $table .= '<td>'.$assessment->kelancaran.'</td>';
+                $table .= '<td>'.$assessment->tajwid.'</td>';
+                $table .= '<td>'.$assessment->makhraj.'</td>';
+                $table .= '<td>'.$assessment->nilai.'</td>';
+                $table .= '<td>'.$assessment->banyak_halaman.'</td>';
+                $table .= '<td>'.$assessment->note.'</td>';
                 $table .= '<td>'. date('d M Y h:i', strtotime($assessment->date)) .'</td>';
-                $table .= '<td><a href="#" data-toggle="modal" data-target="#myModal"><i class="pe-7s-search"></i> Lihat</a></td>';
-                $table .= '<div id="myModal" tabindex="-1" class="modal fade" role="dialog" aria-hidden="true">'; 
-                $table .= '<div class="modal-dialog">';
-                $table .= '<div class="modal-content">';
-                $table .= '<div class="modal-header">';
-                $table .= '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-                $table .= '<h4 class="modal-title">Detail Assessment</h4>';
-                $table .= '</div>';
-                $table .= '<div class="modal-body">';
-                
-                if(isset($assessment->kelancaran)) {
-                    $table .= 'Kelancaran: '.$assessment->kelancaran.'<br>';
-                }
-                
-                if(isset($assessment->tajwid)) {
-                    $table .= 'Tajwid: '.$assessment->tajwid.'<br>';
-                }
-                
-                if(isset($assessment->makhraj)) {
-                    $table .= 'Makhraj: '.$assessment->makhraj.'<br><br>';
-                }
-                
-                if(isset($assessment->note)) {
-                    $table .= 'Catatan: '.$assessment->note;
-                }
-                
-                $table .= '</div>';
-                $table .= '<div class="modal-footer">';
-                $table .= '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-                $table .= '</div>';
-                $table .= '</div>';
-                $table .= '</div>';
-                $table .= '</div>';
-                
-                
                 $table .= '</tr>';
             }
             

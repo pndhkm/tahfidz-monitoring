@@ -43,10 +43,14 @@
 <table id="table_style">
 <thead>
 	<tr>
-	<th> NIS </th>
-	<th> Nama </th>
+	<th> Santri </th>
 	<!-- <th> Surat </th> -->
-	<th> Penilaian</th>
+	<th> Kelancaran</th>
+	<th> Tajwid </th>
+	<th> Makhraj </th>
+	<th> Nilai </th>
+	<th> Banyak Halaman </th>
+	<th> Keterangan </th>
 	<th> Tanggal </th>
 	</tr>
 </thead>
@@ -60,7 +64,6 @@
 
     @if ($assessment->siswa_id != $old_assessment)
    
-		<td>{{ $assessment->getSiswa->nis }}</td>
         <td>{{ $assessment->getSiswa->siswa_name }}</td>
         
         <?php $old_assessment = $assessment->siswa_id; ?>
@@ -70,12 +73,12 @@
     @endif
     
     <!-- <td>{{ $assessment->assessment }}</td> -->
-    <td>
-		Kelancaran: {{ $assessment->kelancaran }} <br>
-		Tajwid: {{ $assessment->tajwid }} <br>
-		Makhraj: {{ $assessment->makhraj }} <br><br>
-    	Catatan: {{ $assessment->note }}
-	</td>
+    <td>{{ $assessment->kelancaran }}</td>
+    <td>{{ $assessment->tajwid }}</td>
+    <td>{{ $assessment->makhraj }}</td>
+    <td>{{ $assessment->nilai }}</td>
+    <td>{{ $assessment->banyak_halaman }}</td>
+    <td>{{ $assessment->note }}</td>
     <td>{{ date('d M Y', strtotime($assessment->date)) }}</td>
     
     </tr>
