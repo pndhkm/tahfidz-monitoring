@@ -34,7 +34,7 @@
 
 <div style="text-align: center; line-height: 1.5;">
 	<p> 
-		<h4> Laporan Rekap Ananda {{ $siswa_id }}<h4> 
+		<h4> Laporan Rekap Ananda {{ $siswa_id }} <h4> 
 	<p>
 </div>
 
@@ -44,12 +44,8 @@
 <thead>
 	<tr>
 	<th> Surat </th>
-	<th> Kelancaran</th>
-	<th> Tajwid </th>
-	<th> Makhraj </th>
-	<th> Nilai </th>
-	<th> Banyak Halaman </th>
-	<th> Keterangan </th>
+	<!-- <th> Surat </th> -->
+	<th> Penilaian</th>
 	<th> Tanggal </th>
 	</tr>
 </thead>
@@ -60,14 +56,14 @@
 <?php foreach ($data as $assessment) { ?>
 
     <tr>
-    
-  <td>{{ $assessment->assessment }}</td>
-  	<td>{{ $assessment->kelancaran }}</td>
-    <td>{{ $assessment->tajwid }}</td>
-    <td>{{ $assessment->makhraj }}</td>
-    <td>{{ $assessment->nilai }}</td>
-    <td>{{ $assessment->banyak_halaman }}</td>
-    <td>{{ $assessment->note }}</td>
+
+    <td>{{ $assessment->assessment }}: {{ $assessment->range }}</td>
+    <td>
+		Kelancaran: {{ $assessment->kelancaran }} <br>
+		Tajwid: {{ $assessment->tajwid }} <br>
+		Makhraj: {{ $assessment->makhraj }} <br><br>
+    	Catatan: {{ $assessment->note }}
+	</td>
     <td>{{ date('d M Y', strtotime($assessment->date)) }}</td>
     
     </tr>

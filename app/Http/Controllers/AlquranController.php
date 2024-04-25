@@ -45,7 +45,7 @@ class AlquranController extends Controller
                         return $btn .'&nbsp'.'&nbsp'. $delete; 
                     })
 					->addColumn('surah_name', function($row) {
-						return 'Surat '.$row->surah_name;
+						return $row->surah_name;
 					})
                     ->rawColumns(['action'])
                     ->make(true);

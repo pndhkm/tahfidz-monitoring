@@ -108,12 +108,6 @@ class StudentReportController extends Controller
             $table .= '<thead>';
             $table .= '<tr>';
             $table .= '<th> Surat </th>';
-            $table .= '<th> Kelancaran </th>';
-            // $table .= '<th> Ayat / Halaman </th>';
-            $table .= '<th> Tajwid </th>';
-            $table .= '<th> Makhraj </th>';
-            $table .= '<th> Nilai </th>';
-            $table .= '<th> Banyak Halaman </th>';
             $table .= '<th> Keterangan</th>';
             $table .= '<th> Tanggal </th>';
             $table .= '</tr>';
@@ -125,14 +119,12 @@ class StudentReportController extends Controller
             foreach ($data as $assessment) 
             {
                 $table .= '<tr>';               
-                $table .= '<td>'.$assessment->assessment.'</td>';
+                $table .= '<td>'.$assessment->assessment.': '. $assessment->range.'</td>';
                 // $table .= '<td>'.$assessment->range.'</td>';
-                $table .= '<td>'.$assessment->kelancaran.'</td>';
-                $table .= '<td>'.$assessment->tajwid.'</td>';
-                $table .= '<td>'.$assessment->makhraj.'</td>';
-                $table .= '<td>'.$assessment->nilai.'</td>';
-                $table .= '<td>'.$assessment->banyak_halaman.'</td>';
-                $table .= '<td>'.$assessment->note.'</td>';
+                $table .= '<td> Kelancaran: '.$assessment->kelancaran.'<br>';
+                $table .= 'Tajwid: ' . $assessment->tajwid.'<br>';
+                $table .= 'Makhraj: ' . $assessment->makhraj.'<br><br>';
+                $table .= 'Catatan: ' . $assessment->note.'</td>';
                 $table .= '<td>'. date('d M Y', strtotime($assessment->date)) .'</td>';
                 $table .= '</tr>';
             }

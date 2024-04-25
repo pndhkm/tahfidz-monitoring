@@ -33,33 +33,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if($this->getUserPermission('index home'))
-        {
-            if($this->getUserLogin()->account_type == User::ACCOUNT_TYPE_TEACHER)
-            {
-                $siswa = Siswa::where('teacher_id',$this->getUserLogin()->id)->join('tbl_class', 'tbl_siswa.class_id', '=', 'tbl_class.id')->count();
-                $class = StudentClass::where('teacher_id',$this->getUserLogin()->id)->count();
+        if ($this->getUserPermission('index home')) {
+            if ($this->getUserLogin()->account_type == User::ACCOUNT_TYPE_TEACHER) {
+                $siswaQuery = Siswa::where('teacher_id', $this->getUserLogin()->id)
+                                ->join('tbl_class', 'tbl_siswa.class_id', '=', 'tbl_class.id');
+                $siswaCount = $siswaQuery->count();
+                $classCount = StudentClass::where('teacher_id', $this->getUserLogin()->id)->count();
+            } else {
+                $siswaQuery = Siswa::query();
+                $siswaCount = $siswaQuery->count();
+                $classCount = StudentClass::count();
             }
-            else
-            {
-                $siswa = Siswa::count();
-                $class = StudentClass::count();
-            }           
-
-            $hafalan    = AssessmentLog::count();
-            // $hafalan    = AssessmentLog::where('date',date("Y-m-d"))->count();
+        
+            $siswa = $siswaQuery->get();
+            $hafalan = AssessmentLog::count();
+        
+            // $hafalan = AssessmentLog::where('date', date("Y-m-d"))->count();
+        
             $last_login = UserLoginHistory::findLastlogin();
-
-            if($last_login != null)
-            {
-                $last_login = Carbon::parse($last_login->date);
-                $last_login = $last_login->format('d M Y');
+        
+            if ($last_login != null) {
+                $last_login = Carbon::parse($last_login->date)->format('d M Y');
             }
-                
-            $this->systemLog(false,'Mengakses Halaman Home');
-
-            return view('home.index', ['last_login' => $last_login, 'active'=>'home', 'siswa'=>$siswa, 'class'=>$class, 'hafalan'=>$hafalan]);
+        
+            $this->systemLog(false, 'Mengakses Halaman Home');
+        
+            return view('home.index', ['last_login' => $last_login, 'active' => 'home', 'siswa' => $siswa, 'siswaCount' => $siswaCount, 'classCount' => $classCount, 'hafalan' => $hafalan]);
         }
+        
         else
         {
             $this->systemLog(true,'Gagal Mengakses Halaman Home');
